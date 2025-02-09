@@ -3,7 +3,7 @@ import Intro from "@/lib/Intro";
 export default function Home() {
   return (
     <div>
-      <Intro/>
+      Home Page
     </div>
   );
 }
