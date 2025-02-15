@@ -1,9 +1,9 @@
-import Intro from "@/lib/Intro";
+import HomeComponent from "../../lib/HomeComponent";
 
 export default function Home() {
   return (
     <div>
-      Home Page
+      <HomeComponent/>
     </div>
   );
 }
