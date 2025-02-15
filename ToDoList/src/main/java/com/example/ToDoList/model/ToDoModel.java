@@ -1,5 +1,7 @@
 package com.example.ToDoList.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,4 +25,7 @@ public class ToDoModel {
 
 	@Column(name = "is_completed")
 	private boolean isCompleted;
+
+	@Column(name = "date")
+	private LocalDate date;
 }
