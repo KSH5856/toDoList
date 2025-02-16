@@ -1,6 +1,7 @@
 package com.example.ToDoList.model;
 
 import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,5 +28,6 @@ public class ToDoModel {
 	private boolean isCompleted;
 
 	@Column(name = "date")
+	@JsonFormat(pattern = "yyyy-M-d")
 	private LocalDate date;
 }

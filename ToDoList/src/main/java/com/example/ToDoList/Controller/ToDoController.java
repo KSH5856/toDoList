@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ToDoList.Service.ToDoService;
+import com.example.ToDoList.model.RequestBodyDate;
 import com.example.ToDoList.model.ToDoModel;
 
 @RestController
@@ -19,6 +20,11 @@ public class ToDoController {
 
 	@Autowired
 	private ToDoService service;
+
+	@PostMapping("getListByDate")
+	public List<ToDoModel> getListByDate(@RequestBody RequestBodyDate toDoModel) {
+		return service.getToDoListByDate(toDoModel.getDate());
+	}
 
 	@GetMapping("getList")
 	public List<ToDoModel> getList() {

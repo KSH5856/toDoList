@@ -1,5 +1,6 @@
 package com.example.ToDoList.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +18,26 @@ public class ToDoService {
 	@Autowired
 	private ToDoRepository repo;
 
+	public List<ToDoModel> getToDoListByDate(LocalDate dte) {
+		return repo.findByDate(dte);
+	}
+
 	public List<ToDoModel> getToDoList() {
 		return repo.findAll();
 	}
 
 	public ResponseEntity<Object> addTask(ToDoModel toDoModel) {
-		// TODO Auto-generated method stub
 		ResponseBody response = new ResponseBody();
-		response.setError(false);
-		response.setMessage("Task added successfully");
-		repo.save(toDoModel);
-		return new ResponseEntity<Object>(response, HttpStatusCode.valueOf(200));
+		try {
+			response.setError(false);
+			response.setMessage("Task added successfully");
+			repo.save(toDoModel);
+			return new ResponseEntity<Object>(response, HttpStatusCode.valueOf(200));
+		} catch (Exception e) {
+			response.setError(true);
+			response.setMessage(e.getMessage());
+			return new ResponseEntity<Object>(response, HttpStatusCode.valueOf(200));
+		}
 	}
 
 }
